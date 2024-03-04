@@ -310,7 +310,9 @@ app.post('/historico', async (req, res) => {
             for (let i=0; i < hisList.length; i++) {
               const product = await Products.findOne({ _id: hisList[i] });
       
-              getHis.push(product);
+              if (product !== null) {
+                getHis.push(product);
+              };
             };
        
             sendTheResponse(getHis);
